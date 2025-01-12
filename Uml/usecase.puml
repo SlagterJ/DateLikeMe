@@ -1,0 +1,26 @@
+@startuml usecase_diagram
+
+left to right direction
+
+
+actor "Gebruiker" as u
+actor "Ontwikkelaar" as d
+
+rectangle "DateLikeMe" {
+  usecase "UC01: Quiz maken" as uc01
+  usecase "UC02: Score overzien" as uc02
+  usecase "UC03: Quiz creëren" as uc03
+  usecase "UC04: Date registreren" as uc04
+  usecase "UC05: Voorkeuren instellen" as uc05
+  usecase "UC06: Algoritme inzien" as uc06
+}
+
+u -- uc01
+u -- uc02
+u -- uc03
+u -- uc04
+u -- uc05
+
+d -- uc06
+
+@enduml

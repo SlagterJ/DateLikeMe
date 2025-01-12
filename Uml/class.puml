@@ -1,0 +1,54 @@
+@startuml class_diagram
+
+hide circle
+hide empty members
+skinparam classAttributeIconSize 0
+
+
+rectangle "LibDateLikeMe" {
+  class DataPoint {
+    + X : double
+    + Y : double
+    + Z : double
+
+    + ToString() : string
+  }
+
+  class DataPointCalculations {
+    ~ ConvertNumberToValidInterval() : double
+    + IsWithinLikenessFactor() : bool
+  }
+}
+
+rectangle "DateLikeMe" {
+  class Entity {
+    + Identifier : Guid
+  }
+
+  class User {
+    + Name : string
+    + LastScore : DataPoint
+    + PersonalQuiz : Quiz
+  }
+  Entity <|-- User
+
+  class Quiz {
+    + Title : string
+    + Questions : Question[]
+  }
+  Entity <|-- Quiz
+
+  class Question {
+    + Title : string
+    + IsCorrectAnswer : bool
+  }
+  Entity <|-- Question
+}
+
+User "1:n" -- "1" Quiz
+User "1" -- "1" DataPoint
+Quiz "1" -- "1:n" Question
+
+DataPoint -- DataPointCalculations
+
+@enduml
